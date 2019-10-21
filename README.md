@@ -34,7 +34,7 @@ Read the [contributing guidelines](https://developers.blockmatic.io) for details
 
 ## Bug Reporting
 
-Please report bugs big and small by [opening an issue](https://github.com/blockmatic/eosio-hooks/issues/new). No possible bug report is too small.
+Please report bugs big and small by [opening an issue](https://github.com/blockmatic/react-native-dapp-starter/issues/new). No possible bug report is too small.
 
 ## License
 

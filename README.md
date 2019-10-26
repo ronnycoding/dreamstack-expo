@@ -19,13 +19,27 @@
 
 Cross platform React Native dApp starter. 
 
-## Motivation
+## Why Expo
 
-...
+With Expo tools, services, and React, you can build, deploy, and quickly iterate on native Android, iOS, and web apps from the same JavaScript codebase.
+
+- Access to device capabilities like camera, location, notifications, sensors, haptics, and much more, all with cross-platform APIs.
+
+- Build service gives you app-store ready binaries and handles certificates, no need for you to touch Xcode or Android Studio.
+
+- Over-the-air updates let you update your app at any time without the hassle and delays of submitting to the store.
+
+read more [expo.io](https://expo.io)
+
+## Features
+
+- Blockmatic Code Style and common yarn scripts.
+- Automated Code Style with Prettier, Eslint and Husky.
+- More to come ...
 
 ## Usage
 
-...
+`yarn install && yarn start`
 
 
 ## Contributing

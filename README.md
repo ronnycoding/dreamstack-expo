@@ -15,7 +15,7 @@
 	</a>
 </p>
 
-# React Native dApp Stater
+# TELOS Mobile dApp Stater
 
 Cross platform React Native dApp starter. 
 

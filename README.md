@@ -19,7 +19,7 @@
 
 Cross platform React Native dApp starter. 
 
-## Why Expo
+## React Native Expo
 
 With Expo tools, services, and React, you can build, deploy, and quickly iterate on native Android, iOS, and web apps from the same JavaScript codebase.
 
@@ -31,15 +31,56 @@ With Expo tools, services, and React, you can build, deploy, and quickly iterate
 
 read more [expo.io](https://expo.io)
 
+## TELOS
+
+Best in class C++ EOSIO protocol technology providing fast, scalable and eco-freindly blockchain augmented by a growing library of Telos services and innovations. Free accounts, work proposals, dapp grants, decentralized exchange, dstor, bancor protocol, telos community and foundation.
+
+## Disclaimer
+
+This is a work in progress. Feel free to reach us out on telegram for clarifications. 
+https://t.me/blockmatic
+
 ## Features
 
-- Blockmatic Code Style and common yarn scripts.
-- Automated Code Style with Prettier, Eslint and Husky.
-- More to come ...
+- [x] TypeScript.
+- [x] Blockmatic code conventions. ( functional, declarative, hooks )
+- [x] Pre-commit code quality git hooks with husky, prettier and eslint.
+- [x] CSS-in-JS styling based on design system constraints with Theme UI.
+- [ ] Multilanguage (i18n) with i18next.
+- [ ] Non relative (absolute) imports.
+- [ ] Component Error Boundaries.
+- [ ] Hot code reloading.
+- [ ] Automatic testing with Jest.
+- ...
+
+
+## dApp Architecture
+
+...
+
+
+## File Structure
+
+```
+...
+```
 
 ## Usage
 
-`yarn install && yarn start`
+...
+
+## Dev Setup
+
+...
+
+### Prerequisite Software
+
+...
+
+## Testing
+
+...
+
 
 ## TELOS DreamStack
 
@@ -97,4 +138,5 @@ Blockmatic is a boutique software development firm specialized in blockchain and
 [3]: http://www.github.com/blockmatic
 
 <!-- Please don't remove this: Grab your social icons from https://github.com/carlsednaoui/gitsocial -->
+
 

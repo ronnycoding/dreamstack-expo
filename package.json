@@ -33,6 +33,7 @@
     "@blockmatic/prettier-config": "^1.0.4",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.57.65",
+    "all-contributors-cli": "^6.10.0",
     "babel-preset-expo": "^7.1.0",
     "husky": "^3.0.9",
     "lint-staged": "^9.4.2",

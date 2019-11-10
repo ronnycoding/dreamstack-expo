@@ -98,6 +98,27 @@ Read the [contributing guidelines](https://developers.blockmatic.io) for details
 
 MIT © Blockmatic
 
+
+<!-- Please don't remove this: Grab your social icons from https://github.com/carlsednaoui/gitsocial -->
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="https://gaboesquivel.com"><img src="https://avatars0.githubusercontent.com/u/391270?v=4" width="100px;" alt="Gabo Esquivel"/><br /><sub><b>Gabo Esquivel</b></sub></a><br /><a href="https://github.com/blockmatic/telos-dapp-starter/commits?author=gaboesquivel" title="Code">💻</a> <a href="#ideas-gaboesquivel" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="http://kevinrodriguez.io/"><img src="https://avatars3.githubusercontent.com/u/6248571?v=4" width="100px;" alt="Kevin Rodríguez"/><br /><sub><b>Kevin Rodríguez</b></sub></a><br /><a href="https://github.com/blockmatic/telos-dapp-starter/commits?author=kevinrodriguez-io" title="Code">💻</a> <a href="#ideas-kevinrodriguez-io" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://kevinwolf.me"><img src="https://avatars2.githubusercontent.com/u/3157426?v=4" width="100px;" alt="Kevin Wolf"/><br /><sub><b>Kevin Wolf</b></sub></a><br /><a href="#ideas-iamkevinwolf" title="Ideas, Planning, & Feedback">🤔</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
 ---
 
 ## Blockmatic
@@ -136,5 +157,3 @@ Blockmatic is building robust ecosystem of people and tools for development of d
 [1]: http://www.twitter.com/blockmatic_io
 [2]: http://fb.me/blockmatic.io
 [3]: http://www.github.com/blockmatic
-
-<!-- Please don't remove this: Grab your social icons from https://github.com/carlsednaoui/gitsocial -->

@@ -42,7 +42,14 @@ https://t.me/blockmatic
 
 ## Features
 
-- [x] TypeScript.
+- [ ] Add key login screen.
+- [ ] Secure key with 6 digit code.
+- [ ] Basic demo page. Read data example and docs.
+- [ ] Push notifications example and docs.
+- [ ] Push transaction example.
+- [ ] Key management thru Expo Secure Store.
+- [ ] Deployment guidelines.
+- [x] Functional TypeScript.
 - [x] Blockmatic code conventions. ( functional, declarative, hooks )
 - [x] Pre-commit code quality git hooks with husky, prettier and eslint.
 - [x] CSS-in-JS styling based on design system constraints with Theme UI.

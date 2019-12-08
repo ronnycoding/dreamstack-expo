@@ -44,14 +44,14 @@ https://t.me/telosdreamstack
 
 ## Features
 
-- [ ] Add key login screen.
-- [ ] Secure key with 6 digit code.
+- [x] Add key login screen.
+- [x] Secure key with 6 digit code.
 - [ ] Basic demo page. Read data example and docs.
 - [ ] Push notifications example and docs.
 - [ ] Push transaction example.
 - [ ] Key management thru Expo Secure Store.
 - [ ] Deployment guidelines.
-- [ ] Theme UI ready.
+- [ ] ~Theme UI ready.~
 - [x] Functional TypeScript.
 - [x] Blockmatic code conventions. ( functional, declarative, hooks )
 - [x] Pre-commit code quality git hooks with husky, prettier and eslint.

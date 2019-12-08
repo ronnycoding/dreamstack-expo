@@ -15,6 +15,8 @@
 	</a>
 </p>
 
+![app](https://user-images.githubusercontent.com/6248571/70386194-53182b80-195c-11ea-9752-63a1866257fc.gif)
+
 # TELOS Mobile dApp Stater
 
 Cross platform React Native dApp starter. 

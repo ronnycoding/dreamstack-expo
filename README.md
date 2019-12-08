@@ -72,7 +72,17 @@ https://t.me/telosdreamstack
 ## File Structure
 
 ```
-...
+src
+|
+  assets/...
+|
+  components/... (Shared UI components)
+|
+  pages/... (App Full Screen Pages)
+|
+  lib/ (App logic)
+  |
+    hooks/ (App-specific hooks)
 ```
 
 ## Usage

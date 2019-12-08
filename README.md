@@ -15,6 +15,8 @@
 	</a>
 </p>
 
+![app](https://user-images.githubusercontent.com/6248571/70386194-53182b80-195c-11ea-9752-63a1866257fc.gif)
+
 # TELOS Mobile dApp Stater
 
 Cross platform React Native dApp starter. 
@@ -44,14 +46,14 @@ https://t.me/telosdreamstack
 
 ## Features
 
-- [ ] Add key login screen.
-- [ ] Secure key with 6 digit code.
+- [x] Add key login screen.
+- [x] Secure key with 6 digit code.
 - [ ] Basic demo page. Read data example and docs.
 - [ ] Push notifications example and docs.
 - [ ] Push transaction example.
 - [ ] Key management thru Expo Secure Store.
 - [ ] Deployment guidelines.
-- [ ] Theme UI ready.
+- [ ] ~Theme UI ready.~
 - [x] Functional TypeScript.
 - [x] Blockmatic code conventions. ( functional, declarative, hooks )
 - [x] Pre-commit code quality git hooks with husky, prettier and eslint.
@@ -72,7 +74,17 @@ https://t.me/telosdreamstack
 ## File Structure
 
 ```
-...
+src
+|
+  assets/...
+|
+  components/... (Shared UI components)
+|
+  pages/... (App Full Screen Pages)
+|
+  lib/ (App logic)
+  |
+    hooks/ (App-specific hooks)
 ```
 
 ## Usage

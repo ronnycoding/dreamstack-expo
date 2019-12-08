@@ -19,6 +19,12 @@
 
 Cross platform React Native dApp starter. 
 
+## TELOS
+
+Best in class C++ EOSIO protocol technology providing fast, scalable and eco-freindly blockchain augmented by a growing library of Telos services and innovations. Free accounts, work proposals, dapp grants, decentralized exchange, dstor, bancor protocol, telos community and foundation.
+
+[Learn more](https://docs.telosdreamstack.io/smart-contracts/telos-blockchain)
+
 ## React Native Expo
 
 With Expo tools, services, and React, you can build, deploy, and quickly iterate on native Android, iOS, and web apps from the same JavaScript codebase.
@@ -30,12 +36,6 @@ With Expo tools, services, and React, you can build, deploy, and quickly iterate
 - Over-the-air updates let you update your app at any time without the hassle and delays of submitting to the store.
 
 read more [expo.io](https://expo.io)
-
-## TELOS
-
-Best in class C++ EOSIO protocol technology providing fast, scalable and eco-freindly blockchain augmented by a growing library of Telos services and innovations. Free accounts, work proposals, dapp grants, decentralized exchange, dstor, bancor protocol, telos community and foundation.
-
-[Learn more](https://docs.telosdreamstack.io/smart-contracts/telos-blockchain)
 
 ## Disclaimer
 

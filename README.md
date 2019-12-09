@@ -55,7 +55,7 @@ https://t.me/telosdreamstack
 - [ ] Push transaction example.
 - [ ] Key management thru Expo Secure Store.
 - [ ] Deployment guidelines.
-- [ ] ~Theme UI ready.~
+- [ ] Emotion Native
 - [x] Functional TypeScript.
 - [x] Blockmatic code conventions. ( functional, declarative, hooks )
 - [x] Pre-commit code quality git hooks with husky, prettier and eslint.

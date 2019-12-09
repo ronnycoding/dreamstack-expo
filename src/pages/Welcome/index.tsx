@@ -4,7 +4,7 @@ import { StyleSheet, Text, Image, SafeAreaView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useNavigation } from 'react-navigation-hooks'
 
-import colors from '../../theme/colors';
+import colors from '../../theme/colors'
 import BottomButton from '../../components/BottomButton'
 import { CREATE_PIN } from '../navigation/UnauthenticatedStackNavigator/keys'
 
@@ -72,7 +72,10 @@ const Welcome: NavigationScreenComponent<{}, {}> = () => {
             <Text style={{ fontFamily: 'Montserrat-Regular' }}> Starter</Text>
           </Text>
           <Text style={styles.subtitle}>
-            By <Text style={{ fontFamily: 'Montserrat-Bold' }}>Telos Dream Stack</Text>
+            By{' '}
+            <Text style={{ fontFamily: 'Montserrat-Bold' }}>
+              Telos Dream Stack
+            </Text>
           </Text>
           <Text style={styles.slogan}>
             Explore all the features{'\n'}of the Telos Dream Stack

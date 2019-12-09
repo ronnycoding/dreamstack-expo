@@ -4,10 +4,7 @@ import { useNavigation } from 'react-navigation-hooks'
 import * as SecureStore from 'expo-secure-store'
 
 import { PRIVATE_KEY } from '../../lib/keys/secureStore'
-import {
-  MAIN,
-  UNAUTHENTICATED,
-} from '../navigation/AuthSwitcherNavigator/keys'
+import { MAIN, UNAUTHENTICATED } from '../navigation/AuthSwitcherNavigator/keys'
 
 const authLoadingStyles = StyleSheet.create({
   container: {

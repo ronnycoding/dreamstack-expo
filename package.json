@@ -7,7 +7,8 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "dev-scripts test",
-    "lint": "dev-scripts lint",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "format": "prettier --write ./**/*.tsx",
     "commit": "dev-scripts commit"
   },
   "lint-staged": {
@@ -43,7 +44,7 @@
     "react-navigation-tabs": "^2.6.2"
   },
   "devDependencies": {
-    "@blockmatic/dev-scripts": "^1.6.1",
+    "@kevinwolf/eslint-config": "^0.2.4",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.57.65",
     "all-contributors-cli": "^6.10.0",

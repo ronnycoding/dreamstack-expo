@@ -18,11 +18,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
-    padding: 20
+    padding: 20,
   },
   caption: {
     fontFamily: 'Montserrat-Regular',
-    color: colors.flatBlack.light
+    color: colors.flatBlack.light,
   },
   textField: {
     color: colors.flatBlack.dark,
@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 50,
     fontFamily: 'Montserrat-Regular',
-    paddingHorizontal: 20
-  }
+    paddingHorizontal: 20,
+  },
 })
 
 const Authenticate: NavigationScreenComponent<{}, {}> = () => {
@@ -42,7 +42,7 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
     registerError,
   ] = useRegisterForPushNotifications(privateKey)
 
-  const privateKeyInputHandler = enteredText => {
+  const privateKeyInputHandler = (enteredText) => {
     setPrivateKey(enteredText)
   }
 
@@ -52,14 +52,10 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
 
   return (
     <>
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior="padding"
-        enabled
-      >
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Text style={styles.caption}>Private Key</Text>
         <Separator marginVertical={20} />
-        <TextInput 
+        <TextInput
           editable={!isRegistering}
           placeholder="Paste your Private Key here"
           placeholderTextColor={colors.flatWhite.dark}
@@ -68,7 +64,9 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
         />
         <Separator marginVertical={20} />
         <Text style={styles.caption}>
-          You can import your TELOS account, just be sure to use the active private key. This private key will be securely stored on the phone and can be only accessed with the PIN you set up
+          You can import your TELOS account, just be sure to use the active
+          private key. This private key will be securely stored on the phone and
+          can be only accessed with the PIN you set up
         </Text>
         <Separator marginVertical={5} />
         {isRegistering && (
@@ -87,7 +85,7 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
       <BottomButton
         title="CONTINUE"
         onPress={handleContinueButtonPress}
-        disabled={privateKey.length < 1} 
+        disabled={privateKey.length < 1}
       />
     </>
   )

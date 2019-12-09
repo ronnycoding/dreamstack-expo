@@ -5,9 +5,9 @@ import { NavigationScreenComponent } from 'react-navigation'
 import * as Haptics from 'expo-haptics'
 import * as SecureStore from 'expo-secure-store'
 
+import { useNavigation } from 'react-navigation-hooks'
 import PinDot from '../../components/PinDot'
 import { usePinSetup, usePinSetupActions } from '../../lib/hooks/usePinSetup'
-import { useNavigation } from 'react-navigation-hooks'
 import { AUTHENTICATE } from '../navigation/UnauthenticatedStackNavigator/keys'
 import { PIN } from '../../lib/keys/secureStore'
 
@@ -54,7 +54,7 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
     return () => {
       reset()
     }
-  }, [])
+  }, [reset])
 
   const handleCompletion = async () => {
     await SecureStore.setItemAsync(PIN, pinConfirmation)

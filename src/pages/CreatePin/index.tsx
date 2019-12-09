@@ -3,10 +3,10 @@ import { SafeAreaView, View, Text, StyleSheet } from 'react-native'
 import VirtualKeyboard from 'react-native-virtual-keyboard'
 import { NavigationScreenComponent } from 'react-navigation'
 import * as Haptics from 'expo-haptics'
+import { useNavigation } from 'react-navigation-hooks'
 import PinDot from '../../components/PinDot'
 
 import { usePinSetup, usePinSetupActions } from '../../lib/hooks/usePinSetup'
-import { useNavigation } from 'react-navigation-hooks'
 import { CONFIRM_PIN } from '../navigation/UnauthenticatedStackNavigator/keys'
 
 const styles = StyleSheet.create({

@@ -7,8 +7,8 @@ import React, {
 import PropTypes from 'prop-types'
 
 interface PinSetupState {
-  pin: string;
-  pinConfirmation: string;
+  pin: string
+  pinConfirmation: string
 }
 
 const PinSetupContext = createContext<PinSetupState>(null)
@@ -58,7 +58,7 @@ export const usePinSetupActions = () => {
     (pin: string) => {
       dispatch({ type: SET_PIN, payload: { pin } })
     },
-    [dispatch],
+    [dispatch]
   )
   const setPinConfirmation = useCallback(
     (pin: string) => {
@@ -67,7 +67,7 @@ export const usePinSetupActions = () => {
         payload: { pinConfirmation: pin },
       })
     },
-    [dispatch],
+    [dispatch]
   )
   const reset = useCallback(() => {
     dispatch({ type: RESET })

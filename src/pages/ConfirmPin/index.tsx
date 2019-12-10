@@ -3,13 +3,11 @@ import { SafeAreaView, View, Text, StyleSheet, Alert } from 'react-native'
 import VirtualKeyboard from 'react-native-virtual-keyboard'
 import { NavigationScreenComponent } from 'react-navigation'
 import * as Haptics from 'expo-haptics'
-import * as SecureStore from 'expo-secure-store'
 
 import { useNavigation } from 'react-navigation-hooks'
 import PinDot from '../../components/PinDot'
 import { usePinSetup, usePinSetupActions } from '../../lib/hooks/usePinSetup'
 import { AUTHENTICATE } from '../navigation/UnauthenticatedStackNavigator/keys'
-import { PIN } from '../../lib/keys/secureStore'
 
 const styles = StyleSheet.create({
   viewStyle: {
@@ -56,8 +54,7 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
     }
   }, [reset])
 
-  const handleCompletion = async () => {
-    await SecureStore.setItemAsync(PIN, pinConfirmation)
+  const handleCompletion = () => {
     navigate(AUTHENTICATE)
   }
 

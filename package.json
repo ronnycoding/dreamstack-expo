@@ -24,6 +24,8 @@
     }
   },
   "dependencies": {
+    "bcrypt": "^3.0.7",
+    "crypto-js": "^3.1.9-1",
     "expo": "^35.0.0",
     "expo-font": "~7.0.0",
     "expo-haptics": "~7.0.0",
@@ -45,6 +47,7 @@
   },
   "devDependencies": {
     "@kevinwolf/eslint-config": "^0.2.4",
+    "@types/bcrypt": "^3.0.0",
     "@types/react": "^16.8.23",
     "@types/react-native": "^0.57.65",
     "all-contributors-cli": "^6.10.0",

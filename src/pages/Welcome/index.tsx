@@ -64,7 +64,7 @@ const Welcome: NavigationScreenComponent<{}, {}> = () => {
         <SafeAreaView style={styles.containerStyle}>
           <Image
             source={require('../../assets/logo.png')}
-            resizeMode="contain"
+            resizeMode='contain'
             style={styles.logoStyle}
           />
           <Text style={styles.heading}>

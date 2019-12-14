@@ -80,7 +80,7 @@ export const usePinSetupActions = () => {
     (pin: string) => {
       dispatch({ type: SET_PIN, payload: { pin } })
     },
-    [dispatch]
+    [dispatch],
   )
 
   const setPinConfirmation = useCallback(
@@ -90,7 +90,7 @@ export const usePinSetupActions = () => {
         payload: { pinConfirmation: pin },
       })
     },
-    [dispatch]
+    [dispatch],
   )
 
   const hashPin = useCallback(
@@ -99,7 +99,7 @@ export const usePinSetupActions = () => {
       const hash = hashWithSalt(pin)
       dispatch({ type: PIN_HASH_LOADED, payload: { pinHash: hash } })
     },
-    [dispatch]
+    [dispatch],
   )
 
   const reset = useCallback(() => {

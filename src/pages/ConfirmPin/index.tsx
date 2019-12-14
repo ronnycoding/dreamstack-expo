@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { SafeAreaView, View, Text, StyleSheet, Alert } from 'react-native'
-import VirtualKeyboard from 'react-native-virtual-keyboard'
 import { NavigationScreenComponent } from 'react-navigation'
 import * as Haptics from 'expo-haptics'
+const VirtualKeyboard = require('react-native-virtual-keyboard')
 
 import { useNavigation } from 'react-navigation-hooks'
 import PinDot from '../../components/PinDot'
@@ -89,8 +89,8 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
       <View style={styles.virtualKeyboardContainer}>
         <View style={styles.grayLine} />
         <VirtualKeyboard
-          pressMode="char"
-          color="#000"
+          pressMode='char'
+          color='#000'
           onPress={handleVirtualKeyboard}
         />
       </View>

@@ -32,7 +32,7 @@ const AuthLoading: React.FC = () => {
 
   return (
     <View style={authLoadingStyles.container}>
-      <ActivityIndicator size="large" />
+      <ActivityIndicator size='large' />
       <Text>Loading</Text>
     </View>
   )

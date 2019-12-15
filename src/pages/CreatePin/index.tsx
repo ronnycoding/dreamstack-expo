@@ -7,7 +7,7 @@ import PinDot from 'components/PinDot'
 const VirtualKeyboard = require('react-native-virtual-keyboard')
 
 import { usePinSetup, usePinSetupActions } from 'lib/hooks/usePinSetup'
-import { CONFIRM_PIN } from '../navigation/UnauthenticatedStackNavigator/keys'
+import { CONFIRM_PIN } from 'pages/navigation/UnauthenticatedStackNavigator/keys'
 
 const styles = StyleSheet.create({
   viewStyle: {
@@ -78,8 +78,8 @@ const CreatePin: NavigationScreenComponent<{}, {}> = () => {
       <View style={styles.virtualKeyboardContainer}>
         <View style={styles.grayLine} />
         <VirtualKeyboard
-          pressMode='char'
-          color='#000'
+          pressMode="char"
+          color="#000"
           onPress={handleVirtualKeyboard}
         />
       </View>

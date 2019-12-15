@@ -4,9 +4,9 @@ import { StyleSheet, Text, Image, SafeAreaView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useNavigation } from 'react-navigation-hooks'
 
-import colors from '../../theme/colors'
-import BottomButton from '../../components/BottomButton'
-import { CREATE_PIN } from '../navigation/UnauthenticatedStackNavigator/keys'
+import colors from 'theme/colors'
+import BottomButton from 'components/BottomButton'
+import { CREATE_PIN } from 'pages/navigation/UnauthenticatedStackNavigator/keys'
 
 const gradientColors = {
   top: colors.flatPurple.dark,
@@ -63,8 +63,8 @@ const Welcome: NavigationScreenComponent<{}, {}> = () => {
       >
         <SafeAreaView style={styles.containerStyle}>
           <Image
-            source={require('../../assets/logo.png')}
-            resizeMode='contain'
+            source={require('assets/logo.png')}
+            resizeMode="contain"
             style={styles.logoStyle}
           />
           <Text style={styles.heading}>

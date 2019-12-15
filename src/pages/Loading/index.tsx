@@ -12,7 +12,7 @@ const loadingStyles = StyleSheet.create({
 export default function Loading() {
   return (
     <View style={loadingStyles.container}>
-      <ActivityIndicator size='large' />
+      <ActivityIndicator size="large" />
       <Text>Loading</Text>
     </View>
   )

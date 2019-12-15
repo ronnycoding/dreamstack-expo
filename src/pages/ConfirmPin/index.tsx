@@ -5,9 +5,9 @@ import * as Haptics from 'expo-haptics'
 const VirtualKeyboard = require('react-native-virtual-keyboard')
 
 import { useNavigation } from 'react-navigation-hooks'
-import PinDot from '../../components/PinDot'
-import { usePinSetup, usePinSetupActions } from '../../lib/hooks/usePinSetup'
-import { AUTHENTICATE } from '../navigation/UnauthenticatedStackNavigator/keys'
+import PinDot from 'components/PinDot'
+import { usePinSetup, usePinSetupActions } from 'lib/hooks/usePinSetup'
+import { AUTHENTICATE } from 'pages/navigation/UnauthenticatedStackNavigator/keys'
 
 const styles = StyleSheet.create({
   viewStyle: {
@@ -89,8 +89,8 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
       <View style={styles.virtualKeyboardContainer}>
         <View style={styles.grayLine} />
         <VirtualKeyboard
-          pressMode='char'
-          color='#000'
+          pressMode="char"
+          color="#000"
           onPress={handleVirtualKeyboard}
         />
       </View>

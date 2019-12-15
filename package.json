@@ -7,12 +7,11 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "dev-scripts test",
-    "lint": "eslint --ignore-path .gitignore '**/*.+(js|ts|tsx)'",
-    "check-types": "tsc",
-    "prettier": "prettier --ignore-path .gitignore --write '**/*.+(js|json|ts|tsx)'",
+    "lint": "eslint --ignore-path .gitignore '**/*.+(ts|tsx)'",
+    "prettier": "prettier --ignore-path .gitignore --write '**/*.+(json|ts|tsx)'",
     "format": "yarn prettier --write",
     "check-format": "yarn prettier --list-different",
-    "validate": "yarn check-types && yarn check-format && yarn lint"
+    "validate": "yarn check-format && yarn lint"
   },
   "lint-staged": {
     "*.js": [
@@ -39,10 +38,10 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
     "react-native-gesture-handler": "~1.5.2",
     "react-native-reanimated": "~1.4.0",
-    "react-native-screens": "~2.0.0-alpha.19",
+    "react-native-screens": "2.0.0-alpha.12",
     "react-native-virtual-keyboard": "^1.1.0",
     "react-native-web": "^0.11.7",
-    "react-native-webview": "7.6.0",
+    "react-native-webview": "7.4.3",
     "react-navigation": "^4.0.10",
     "react-navigation-hooks": "^1.1.0",
     "react-navigation-stack": "^1.10.3",

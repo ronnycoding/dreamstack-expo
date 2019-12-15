@@ -4,8 +4,9 @@ import React, {
   createContext,
   useCallback,
 } from 'react'
+import OneOrMoreChildren from 'types'
 
-import { hashWithSalt } from '../../crypto/hashing'
+import { hashWithSalt } from 'lib/crypto/hashing'
 
 interface PinSetupState {
   pin: string
@@ -58,7 +59,7 @@ const reducer = (state = initialState, { type, payload }) => {
   }
 }
 
-export const PinSetupProvider: React.FC = ({ children }) => {
+export function PinSetupProvider({ children }: OneOrMoreChildren) {
   const [state, dispatch] = useReducer(reducer, initialState)
   return (
     <PinSetupDispatchContext.Provider value={dispatch}>

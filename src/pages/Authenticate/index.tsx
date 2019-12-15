@@ -8,11 +8,11 @@ import {
   TextInput,
 } from 'react-native'
 
-import colors from '../../theme/colors'
+import colors from 'theme/colors'
 
-import useRegisterForPushNotifications from '../../lib/hooks/useRegisterForPushNotifications'
-import Separator from '../../components/Separator'
-import BottomButton from '../../components/BottomButton'
+import useRegisterForPushNotifications from 'lib/hooks/useRegisterForPushNotifications'
+import Separator from 'components/Separator'
+import BottomButton from 'components/BottomButton'
 
 const styles = StyleSheet.create({
   container: {
@@ -36,11 +36,9 @@ const styles = StyleSheet.create({
 
 const Authenticate: NavigationScreenComponent<{}, {}> = () => {
   const [privateKey, setPrivateKey] = useState('')
-  const [
-    register,
-    isRegistering,
-    registerError,
-  ] = useRegisterForPushNotifications(privateKey)
+  const [isRegistering, registerError] = useRegisterForPushNotifications(
+    privateKey,
+  )
 
   const privateKeyInputHandler = enteredText => {
     setPrivateKey(enteredText)
@@ -52,12 +50,12 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
 
   return (
     <>
-      <KeyboardAvoidingView style={styles.container} behavior='padding' enabled>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Text style={styles.caption}>Private Key</Text>
         <Separator marginVertical={20} />
         <TextInput
           editable={!isRegistering}
-          placeholder='Paste your Private Key here'
+          placeholder="Paste your Private Key here"
           placeholderTextColor={colors.flatWhite.dark}
           style={styles.textField}
           onChangeText={privateKeyInputHandler}
@@ -72,7 +70,7 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
         {isRegistering && (
           <>
             <Separator marginVertical={5} />
-            <ActivityIndicator size='large' />
+            <ActivityIndicator size="large" />
           </>
         )}
         {registerError && (
@@ -83,7 +81,7 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
         )}
       </KeyboardAvoidingView>
       <BottomButton
-        title='CONTINUE'
+        title="CONTINUE"
         onPress={handleContinueButtonPress}
         disabled={privateKey.length < 1}
       />

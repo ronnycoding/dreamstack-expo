@@ -1,6 +1,5 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import PropTypes from 'prop-types'
 import colors from '../../theme/colors'
 
 const styles = StyleSheet.create({
@@ -25,10 +24,6 @@ const PinDot: React.FC<{ active: boolean }> = ({ active = false }) => {
       }}
     />
   )
-}
-
-PinDot.propTypes = {
-  active: PropTypes.bool,
 }
 
 export default PinDot

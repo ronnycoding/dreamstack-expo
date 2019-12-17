@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
   const { navigate } = useNavigation()
   const { pin, pinConfirmation } = usePinSetup()
-  const { setPinConfirmation, reset } = usePinSetupActions()
+  const { setPinConfirmation, hashPin, reset } = usePinSetupActions()
 
   // On view exit, clean up pins
   useEffect(() => {
@@ -68,6 +68,7 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
     }
     setPinConfirmation(newPin)
     if (newPin.length === 6 && pin === newPin) {
+      // hashPin(newPin)
       handleCompletion()
     } else if (newPin.length === 6 && pin !== newPin) {
       Alert.alert('Wrong pin', "The pins you provided don't match")

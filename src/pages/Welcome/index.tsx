@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import React from 'react'
 import { NavigationScreenComponent } from 'react-navigation'
 import { StyleSheet, Text, Image, SafeAreaView } from 'react-native'

@@ -7,11 +7,16 @@ import Welcome from '../../Welcome'
 import CreatePin from '../../CreatePin'
 import ConfirmPin from '../../ConfirmPin'
 
-const UnauthenticatedStackNavigator = createStackNavigator({
-  [WELCOME]: Welcome,
-  [AUTHENTICATE]: Authenticate,
-  [CREATE_PIN]: CreatePin,
-  [CONFIRM_PIN]: ConfirmPin,
-})
+const UnauthenticatedStackNavigator = createStackNavigator(
+  {
+    [WELCOME]: Welcome,
+    [AUTHENTICATE]: Authenticate,
+    [CREATE_PIN]: CreatePin,
+    [CONFIRM_PIN]: ConfirmPin,
+  },
+  {
+    initialRouteName: WELCOME,
+  }
+)
 
 export default UnauthenticatedStackNavigator

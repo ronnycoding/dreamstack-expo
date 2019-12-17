@@ -1,5 +1,10 @@
-import { hash, compare } from 'bcrypt'
-import { SALT_ROUNDS } from '../../../env'
+import { SHA256, enc } from 'crypto-js'
+import { SALT } from '../../../env'
 
-export const hashWithSalt = (data) => hash(data, SALT_ROUNDS)
-export const compareElements = (raw, encrypted) => compare(raw, encrypted)
+export const hashWithSalt = (data) =>
+  SHA256(`${data}${SALT}`).toString(enc.Utf8)
+
+export const compareElements = (raw, hash) => {
+  const hashed = hashWithSalt(raw)
+  return hashed === hash
+}

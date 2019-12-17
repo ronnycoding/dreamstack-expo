@@ -5,7 +5,6 @@ import {
   StyleSheet,
   GestureResponderEvent,
 } from 'react-native'
-import PropTypes from 'prop-types'
 import colors from '../../theme/colors'
 
 const styles = StyleSheet.create({
@@ -50,12 +49,6 @@ const BottomButton: React.FC<BottomButtonProps> = ({
       <Text style={styles.textStyle}>{title}</Text>
     </TouchableOpacity>
   )
-}
-
-BottomButton.propTypes = {
-  onPress: PropTypes.func,
-  title: PropTypes.string,
-  disabled: PropTypes.bool,
 }
 
 export default BottomButton

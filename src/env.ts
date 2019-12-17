@@ -1,1 +1,1 @@
-export const SALT_ROUNDS = 10
+export const SALT = '3rKai4Pw9F0v9TqD'

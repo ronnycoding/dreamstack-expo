@@ -1,3 +1,6 @@
 module.exports = {
-  extends: "@kevinwolf"
-};
+  extends: ['@blockmatic'],
+  rules: {
+    '@typescript-eslint/camelcase': 0,
+  },
+}

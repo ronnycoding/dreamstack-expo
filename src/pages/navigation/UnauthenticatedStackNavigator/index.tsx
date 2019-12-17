@@ -2,10 +2,10 @@ import { createStackNavigator } from 'react-navigation-stack'
 
 import { AUTHENTICATE, WELCOME, CREATE_PIN, CONFIRM_PIN } from './keys'
 
-import Authenticate from '../../Authenticate'
-import Welcome from '../../Welcome'
-import CreatePin from '../../CreatePin'
-import ConfirmPin from '../../ConfirmPin'
+import Authenticate from 'pages/Authenticate'
+import Welcome from 'pages/Welcome'
+import CreatePin from 'pages/CreatePin'
+import ConfirmPin from 'pages/ConfirmPin'
 
 const UnauthenticatedStackNavigator = createStackNavigator(
   {

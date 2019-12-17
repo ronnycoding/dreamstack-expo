@@ -1,7 +1,7 @@
 import { createStackNavigator } from 'react-navigation-stack'
 
 import { HOME } from './keys'
-import Home from '../../Home'
+import Home from 'pages/Home'
 
 const MainStackNavigator = createStackNavigator({
   [HOME]: Home,

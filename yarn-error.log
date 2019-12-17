@@ -1,29 +1,29 @@
 Arguments: 
-  /Users/kevin/.nvm/versions/node/v12.13.1/bin/node /usr/local/Cellar/yarn/1.19.2/libexec/bin/yarn.js add @types/react-native-bcrypt
+  /Users/gaboesquivel/.nvm/versions/node/v12.13.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add -D @types/react-native-virtual-keyboard
 
 PATH: 
-  /anaconda3/bin:/Users/kevin/.nvm/versions/node/v12.13.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Apple/bin:/usr/local/share/dotnet:/opt/X11/bin:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Applications/Xamarin Workbooks.app/Contents/SharedSupport/path-bin:/anaconda3/bin:/Users/kevin/.nvm/versions/node/v12.13.1/bin:/Users/kevin/development/flutter/bin:/Users/kevin/Library/Android/sdk/tools:/Users/kevin/Library/Android/sdk/platform-tools:/Users/kevin/development/flutter/bin:/Users/kevin/Library/Android/sdk/tools:/Users/kevin/Library/Android/sdk/platform-tools
+  /Users/gaboesquivel/.cargo/bin:/Users/gaboesquivel/.nvm/versions/node/v12.13.0/bin:/usr/local/opt/openssl/bin:/usr/local/Cellar/postgresql/9.5.4/bin:/Users/gaboesquivel/.rbenv/shims:/Users/gaboesquivel/bin:/usr/local/bin:/Users/gaboesquivel/.nvm/versions/node/v12.13.0/bin:/Users/gaboesquivel/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/gaboesquivel/.cargo/bin:/Users/gaboesquivel/.nvm/versions/node/v12.13.0/bin:/usr/local/opt/openssl/bin:/usr/local/Cellar/postgresql/9.5.4/bin:/Users/gaboesquivel/.rbenv/shims:/Users/gaboesquivel/bin:/Users/gaboesquivel/Library/Android/sdk/tools:/Users/gaboesquivel/Library/Android/sdk/platform-tools:/Users/gaboesquivel/Library/Android/sdk/tools:/Users/gaboesquivel/Library/Android/sdk/platform-tools
 
 Yarn version: 
-  1.19.2
+  1.17.3
 
 Node version: 
-  12.13.1
+  12.13.0
 
 Platform: 
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2freact-native-bcrypt: Not found
-      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.19.2/libexec/lib/cli.js:66927:18)
-      at Request.self.callback (/usr/local/Cellar/yarn/1.19.2/libexec/lib/cli.js:140586:22)
+  Error: https://registry.yarnpkg.com/@types%2freact-native-virtual-keyboard: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:66830:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:140464:22)
       at Request.emit (events.js:210:5)
-      at Request.<anonymous> (/usr/local/Cellar/yarn/1.19.2/libexec/lib/cli.js:141558:10)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:141436:10)
       at Request.emit (events.js:210:5)
-      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.19.2/libexec/lib/cli.js:141480:12)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:141358:12)
       at Object.onceWrapper (events.js:299:28)
       at IncomingMessage.emit (events.js:215:7)
-      at endReadableNT (_stream_readable.js:1184:12)
+      at endReadableNT (_stream_readable.js:1183:12)
       at processTicksAndRejections (internal/process/task_queues.js:80:21)
 
 npm manifest: 
@@ -36,9 +36,12 @@ npm manifest:
       "web": "expo start --web",
       "eject": "expo eject",
       "test": "dev-scripts test",
-      "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
-      "format": "prettier --write ./**/*.tsx",
-      "commit": "dev-scripts commit"
+      "lint": "eslint --ignore-path .gitignore '**/*.+(js|ts|tsx)'",
+      "check-types": "tsc",
+      "prettier": "prettier --ignore-path .gitignore --write '**/*.+(js|json|ts|tsx)'",
+      "format": "yarn prettier --write",
+      "check-format": "yarn prettier --list-different",
+      "validate": "yarn check-types && yarn check-format && yarn lint"
     },
     "lint-staged": {
       "*.js": [
@@ -53,6 +56,7 @@ npm manifest:
       }
     },
     "dependencies": {
+      "bcrypt": "^3.0.7",
       "crypto-js": "^3.1.9-1",
       "expo": "^35.0.0",
       "expo-font": "~7.0.0",
@@ -62,7 +66,6 @@ npm manifest:
       "react": "16.8.3",
       "react-dom": "16.8.3",
       "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
-      "react-native-bcrypt": "^2.4.0",
       "react-native-gesture-handler": "~1.3.0",
       "react-native-reanimated": "~1.2.0",
       "react-native-screens": "~1.0.0-alpha.23",
@@ -75,13 +78,18 @@ npm manifest:
       "react-navigation-tabs": "^2.6.2"
     },
     "devDependencies": {
+      "@blockmatic/eslint-config": "^1.3.5",
+      "@blockmatic/prettier-config": "^1.2.2",
+      "@blockmatic/tsconfig": "^1.5.0",
       "@kevinwolf/eslint-config": "^0.2.4",
+      "@types/bcrypt": "^3.0.0",
       "@types/react": "^16.8.23",
       "@types/react-native": "^0.57.65",
       "all-contributors-cli": "^6.10.0",
       "babel-preset-expo": "^7.1.0",
+      "eslint": "^6.7.2",
       "eslint-plugin-react-hooks": "^2.3.0",
-      "husky": "^3.0.9",
+      "husky": "^3.1.0",
       "lint-staged": "^9.4.2",
       "prettier": "^1.19.1",
       "typescript": "^3.6.3"
@@ -954,6 +962,53 @@ Lockfile:
       lodash "^4.17.13"
       to-fast-properties "^2.0.0"
   
+  "@blockmatic/eslint-config-base@^1.3.0":
+    version "1.3.0"
+    resolved "https://registry.yarnpkg.com/@blockmatic/eslint-config-base/-/eslint-config-base-1.3.0.tgz#7a0ca43fcaccc48986d77f7bee4252923d867e69"
+    integrity sha512-bQkp6bzEAIVTHw5uxr2eYrdz5OzsxNHG0UhzHiFKb56FGhJb0XpdLdDKDx0oJ/i3LCDfuA6ygYoxMIf1MuQEpg==
+  
+  "@blockmatic/eslint-config-react@^1.3.2":
+    version "1.3.2"
+    resolved "https://registry.yarnpkg.com/@blockmatic/eslint-config-react/-/eslint-config-react-1.3.2.tgz#2622d0bf994a2203355fd5aa6e130e2b4bc68043"
+    integrity sha512-DRM8E+51N2KS2OCZgaiD6JZO4kGtpqYCEwIL1tEzoR3YCk1VtnA2f3NBa6IeHrObEXIg/BzFrVf7twqEdmZbsg==
+    dependencies:
+      eslint-plugin-jsx-a11y "^6.2.1"
+      eslint-plugin-react "^7.14.2"
+      eslint-plugin-react-hooks "^2.3.0"
+  
+  "@blockmatic/eslint-config-typescript@^1.1.2":
+    version "1.1.2"
+    resolved "https://registry.yarnpkg.com/@blockmatic/eslint-config-typescript/-/eslint-config-typescript-1.1.2.tgz#9e9eb58a842592e981d026ededca5f9536c41724"
+    integrity sha512-UZnNQ3yTpbN0QEplgHLEaO0yWMD9xNxTHkRMvXPuW7iTccpyIRi9v5segdlp5tUgLyHg26uyCt9czw5UVKh/8A==
+    dependencies:
+      "@typescript-eslint/eslint-plugin" "2.x"
+      "@typescript-eslint/parser" "2.x"
+  
+  "@blockmatic/eslint-config@^1.3.5":
+    version "1.3.5"
+    resolved "https://registry.yarnpkg.com/@blockmatic/eslint-config/-/eslint-config-1.3.5.tgz#c2a07192fe70650df79ecf76c20bacb3bcc2e258"
+    integrity sha512-HqlcNjfjPWJYsyFgl5fwgREfAT3lW+T/PXrM65mZayWBvaq53q36NTMZ3S7bXQ/PXYkhKv4vrF19ZR9MrvHNWQ==
+    dependencies:
+      "@blockmatic/eslint-config-base" "^1.3.0"
+      "@blockmatic/eslint-config-react" "^1.3.2"
+      "@blockmatic/eslint-config-typescript" "^1.1.2"
+      "@typescript-eslint/eslint-plugin" "^2.11.0"
+      "@typescript-eslint/parser" "^2.11.0"
+      eslint-plugin-jsx-a11y "^6.2.3"
+      eslint-plugin-react "^7.17.0"
+      lodash.has "^4.5.2"
+      read-pkg-up "^7.0.1"
+  
+  "@blockmatic/prettier-config@^1.2.2":
+    version "1.2.2"
+    resolved "https://registry.yarnpkg.com/@blockmatic/prettier-config/-/prettier-config-1.2.2.tgz#c7e8643516c98324613ddcf3b233e440016efe1d"
+    integrity sha512-r1hy35imc1gmfjFSkIdBSObB+TZF6682EatlKZmTXRZxfzJfX01ROJS2HdNOOxsMiHKY0UwdYk+PdyoYd5n00A==
+  
+  "@blockmatic/tsconfig@^1.5.0":
+    version "1.5.0"
+    resolved "https://registry.yarnpkg.com/@blockmatic/tsconfig/-/tsconfig-1.5.0.tgz#4915cedeb4be756be505274a32bafa1780592903"
+    integrity sha512-MNEhwB33LxRGsh+ah7nTjGjZ/2a1Up7lQ873xaKJkhi69lE68OlkPX4jzxjGoUVg0U347fDvl0birQ8A4TI4Tw==
+  
   "@expo/vector-icons@^10.0.2":
     version "10.0.6"
     resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-10.0.6.tgz#5718953ff0b97827d11dae5787976fa8ce5caaed"
@@ -1081,6 +1136,11 @@ Lockfile:
     dependencies:
       any-observable "^0.3.0"
   
+  "@types/bcrypt@^3.0.0":
+    version "3.0.0"
+    resolved "https://registry.yarnpkg.com/@types/bcrypt/-/bcrypt-3.0.0.tgz#851489a9065a067cb7f3c9cbe4ce9bed8bba0876"
+    integrity sha512-nohgNyv+1ViVcubKBh0+XiNJ3dO8nYu///9aJ4cgSqv70gBL+94SNy/iC2NLzKPT2Zt/QavrOkBVbZRLZmw6NQ==
+  
   "@types/eslint-visitor-keys@^1.0.0":
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
@@ -1178,6 +1238,17 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/websql/-/websql-0.0.27.tgz#621a666a7f02018e7cbb4abab956a25736c27d71"
     integrity sha1-Yhpman8CAY58u0q6uVaiVzbCfXE=
   
+  "@typescript-eslint/eslint-plugin@2.x", "@typescript-eslint/eslint-plugin@^2.11.0":
+    version "2.11.0"
+    resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-2.11.0.tgz#4477c33491ccf0a9a3f4a30ef84978fa0ea0cad2"
+    integrity sha512-G2HHA1vpMN0EEbUuWubiCCfd0R3a30BB+UdvnFkxwZIxYEGOrWEXDv8tBFO9f44CWc47Xv9lLM3VSn4ORLI2bA==
+    dependencies:
+      "@typescript-eslint/experimental-utils" "2.11.0"
+      eslint-utils "^1.4.3"
+      functional-red-black-tree "^1.0.1"
+      regexpp "^3.0.0"
+      tsutils "^3.17.1"
+  
   "@typescript-eslint/eslint-plugin@^2.6.1":
     version "2.10.0"
     resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-2.10.0.tgz#c4cb103275e555e8a7e9b3d14c5951eb6d431e70"
@@ -1198,6 +1269,25 @@ Lockfile:
       "@typescript-eslint/typescript-estree" "2.10.0"
       eslint-scope "^5.0.0"
   
+  "@typescript-eslint/experimental-utils@2.11.0":
+    version "2.11.0"
+    resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-2.11.0.tgz#cef18e6b122706c65248a5d8984a9779ed1e52ac"
+    integrity sha512-YxcA/y0ZJaCc/fB/MClhcDxHI0nOBB7v2/WxBju2cOTanX7jO9ttQq6Fy4yW9UaY5bPd9xL3cun3lDVqk67sPQ==
+    dependencies:
+      "@types/json-schema" "^7.0.3"
+      "@typescript-eslint/typescript-estree" "2.11.0"
+      eslint-scope "^5.0.0"
+  
+  "@typescript-eslint/parser@2.x", "@typescript-eslint/parser@^2.11.0":
+    version "2.11.0"
+    resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-2.11.0.tgz#cdcc3be73ee31cbef089af5ff97ccaa380ef6e8b"
+    integrity sha512-DyGXeqhb3moMioEFZIHIp7oXBBh7dEfPTzGrlyP0Mi9ScCra4SWEGs3kPd18mG7Sy9Wy8z88zmrw5tSGL6r/6A==
+    dependencies:
+      "@types/eslint-visitor-keys" "^1.0.0"
+      "@typescript-eslint/experimental-utils" "2.11.0"
+      "@typescript-eslint/typescript-estree" "2.11.0"
+      eslint-visitor-keys "^1.1.0"
+  
   "@typescript-eslint/parser@^2.6.1":
     version "2.10.0"
     resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-2.10.0.tgz#24b2e48384ab6d5a6121e4c4faf8892c79657ad3"
@@ -1212,6 +1302,19 @@ Lockfile:
     version "2.10.0"
     resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-2.10.0.tgz#89cdabd5e8c774e9d590588cb42fb9afd14dcbd9"
     integrity sha512-oOYnplddQNm/LGVkqbkAwx4TIBuuZ36cAQq9v3nFIU9FmhemHuVzAesMSXNQDdAzCa5bFgCrfD3JWhYVKlRN2g==
+    dependencies:
+      debug "^4.1.1"
+      eslint-visitor-keys "^1.1.0"
+      glob "^7.1.6"
+      is-glob "^4.0.1"
+      lodash.unescape "4.0.1"
+      semver "^6.3.0"
+      tsutils "^3.17.1"
+  
+  "@typescript-eslint/typescript-estree@2.11.0":
+    version "2.11.0"
+    resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-2.11.0.tgz#21ada6504274cd1644855926312c798fc697e9fb"
+    integrity sha512-HGY4+d4MagO6cKMcKfIKaTMxcAv7dEVnji2Zi+vi5VV8uWAM631KjAB5GxFcexMYrwKT0EekRiiGK1/Sd7VFGA==
     dependencies:
       debug "^4.1.1"
       eslint-visitor-keys "^1.1.0"
@@ -1727,6 +1830,14 @@ Lockfile:
     integrity sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
     dependencies:
       tweetnacl "^0.14.3"
+  
+  bcrypt@^3.0.7:
+    version "3.0.7"
+    resolved "https://registry.yarnpkg.com/bcrypt/-/bcrypt-3.0.7.tgz#1187d29df2e1cde44268152b13e3d4a655a7c7de"
+    integrity sha512-K5UglF9VQvBMHl/1elNyyFvAfOY9Bj+rpKrCSR9sFwcW8FywAYJSRwTURNej5TaAK2TEJkcJ6r6lh1YPmspx5Q==
+    dependencies:
+      nan "2.14.0"
+      node-pre-gyp "0.13.0"
   
   big-integer@^1.6.7:
     version "1.6.47"
@@ -2592,7 +2703,7 @@ Lockfile:
       read-pkg-up "^2.0.0"
       resolve "^1.11.0"
   
-  eslint-plugin-jsx-a11y@^6.2.3:
+  eslint-plugin-jsx-a11y@^6.2.1, eslint-plugin-jsx-a11y@^6.2.3:
     version "6.2.3"
     resolved "https://registry.yarnpkg.com/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-6.2.3.tgz#b872a09d5de51af70a97db1eea7dc933043708aa"
     integrity sha512-CawzfGt9w83tyuVekn0GDPU9ytYtxyxyFZ3aSWROmnRRFQFT2BiPJd7jvRdzNDi6oLWaS2asMeYSNMjWTV4eNg==
@@ -2631,7 +2742,7 @@ Lockfile:
     dependencies:
       eslint-plugin-react-native-globals "^0.1.1"
   
-  eslint-plugin-react@^7.16.0:
+  eslint-plugin-react@^7.14.2, eslint-plugin-react@^7.16.0, eslint-plugin-react@^7.17.0:
     version "7.17.0"
     resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.17.0.tgz#a31b3e134b76046abe3cd278e7482bd35a1d12d7"
     integrity sha512-ODB7yg6lxhBVMeiH1c7E95FLD4E/TwmFjltiU+ethv7KPdCwgiFuOZg9zNRHyufStTDLl/dEFqI2Q1VPmCd78A==
@@ -2667,7 +2778,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.1.0.tgz#e2a82cea84ff246ad6fb57f9bde5b46621459ec2"
     integrity sha512-8y9YjtM1JBJU/A9Kc+SbaOV4y29sSWckBwMHa+FGtVj5gN/sbnKDf6xJUl+8g7FAij9LVaP8C24DUiH/f/2Z9A==
   
-  eslint@^6.6.0:
+  eslint@^6.6.0, eslint@^6.7.2:
     version "6.7.2"
     resolved "https://registry.yarnpkg.com/eslint/-/eslint-6.7.2.tgz#c17707ca4ad7b2d8af986a33feba71e18a9fecd1"
     integrity sha512-qMlSWJaCSxDFr8fBPvJM9kJwbazrhNcBU3+DszDW1OlEwKBBRWsJc7NJFelvwQpanHCR14cOLD41x8Eqvo3Nng==
@@ -3660,10 +3771,10 @@ Lockfile:
       jsprim "^1.2.2"
       sshpk "^1.7.0"
   
-  husky@^3.0.9:
-    version "3.0.9"
-    resolved "https://registry.yarnpkg.com/husky/-/husky-3.0.9.tgz#a2c3e9829bfd6b4957509a9500d2eef5dbfc8044"
-    integrity sha512-Yolhupm7le2/MqC1VYLk/cNmYxsSsqKkTyBhzQHhPK1jFnC89mmmNVuGtLNabjDI6Aj8UNIr0KpRNuBkiC4+sg==
+  husky@^3.1.0:
+    version "3.1.0"
+    resolved "https://registry.yarnpkg.com/husky/-/husky-3.1.0.tgz#5faad520ab860582ed94f0c1a77f0f04c90b57c0"
+    integrity sha512-FJkPoHHB+6s4a+jwPqBudBDvYZsoQW5/HBuMSehC8qDiCe50kpcxeqFoDSlow+9I6wg47YxBoT3WxaURlrDIIQ==
     dependencies:
       chalk "^2.4.2"
       ci-info "^2.0.0"
@@ -5081,7 +5192,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
     integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
   
-  nan@^2.12.1:
+  nan@2.14.0, nan@^2.12.1:
     version "2.14.0"
     resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
     integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
@@ -5160,6 +5271,22 @@ Lockfile:
       semver "^5.5.0"
       shellwords "^0.1.1"
       which "^1.3.0"
+  
+  node-pre-gyp@0.13.0:
+    version "0.13.0"
+    resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.13.0.tgz#df9ab7b68dd6498137717838e4f92a33fc9daa42"
+    integrity sha512-Md1D3xnEne8b/HGVQkZZwV27WUi1ZRuZBij24TNaZwUPU3ZAFtvT6xxJGaUVillfmMKnn5oD1HoGsp2Ftik7SQ==
+    dependencies:
+      detect-libc "^1.0.2"
+      mkdirp "^0.5.1"
+      needle "^2.2.1"
+      nopt "^4.0.1"
+      npm-packlist "^1.1.6"
+      npmlog "^4.0.2"
+      rc "^1.2.7"
+      rimraf "^2.6.1"
+      semver "^5.3.0"
+      tar "^4"
   
   node-pre-gyp@^0.12.0:
     version "0.12.0"
@@ -5936,11 +6063,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
     integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
   
-  react-native-bcrypt@^2.4.0:
-    version "2.4.0"
-    resolved "https://registry.yarnpkg.com/react-native-bcrypt/-/react-native-bcrypt-2.4.0.tgz#95dff2dbc849c22b25f0b9379ab7bfebd2140bfd"
-    integrity sha1-ld/y28hJwisl8Lk3mre/69IUC/0=
-  
   react-native-branch@~3.0.1:
     version "3.0.1"
     resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-3.0.1.tgz#5b07b61cbd290168cd3c3662e017ebe0f356d2ca"
@@ -6137,7 +6259,7 @@ Lockfile:
       find-up "^2.0.0"
       read-pkg "^2.0.0"
   
-  read-pkg-up@^7.0.0:
+  read-pkg-up@^7.0.0, read-pkg-up@^7.0.1:
     version "7.0.1"
     resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-7.0.1.tgz#f3a6135758459733ae2b95638056e1854e7ef507"
     integrity sha512-zK0TB7Xd6JpCLmlLmufqykGE+/TlOePD6qKClNW7hHDKFh/J7/7gCWGR7joEQEW1bKq3a3yUZSObOoWLFQ4ohg==

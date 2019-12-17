@@ -8,11 +8,11 @@ import {
   TextInput,
 } from 'react-native'
 
-import colors from '../../theme/colors'
+import colors from 'theme/colors'
 
-import useRegisterForPushNotifications from '../../lib/hooks/useRegisterForPushNotifications'
-import Separator from '../../components/Separator'
-import BottomButton from '../../components/BottomButton'
+import useRegisterForPushNotifications from 'lib/hooks/useRegisterForPushNotifications'
+import Separator from 'components/Separator'
+import BottomButton from 'components/BottomButton'
 
 const styles = StyleSheet.create({
   container: {
@@ -36,13 +36,11 @@ const styles = StyleSheet.create({
 
 const Authenticate: NavigationScreenComponent<{}, {}> = () => {
   const [privateKey, setPrivateKey] = useState('')
-  const [
-    register,
-    isRegistering,
-    registerError,
-  ] = useRegisterForPushNotifications(privateKey)
+  const [isRegistering, registerError] = useRegisterForPushNotifications(
+    privateKey,
+  )
 
-  const privateKeyInputHandler = (enteredText) => {
+  const privateKeyInputHandler = enteredText => {
     setPrivateKey(enteredText)
   }
 

@@ -1,13 +1,13 @@
 import React from 'react'
 import { SafeAreaView, View, Text, StyleSheet } from 'react-native'
-import VirtualKeyboard from 'react-native-virtual-keyboard'
 import { NavigationScreenComponent } from 'react-navigation'
 import * as Haptics from 'expo-haptics'
 import { useNavigation } from 'react-navigation-hooks'
-import PinDot from '../../components/PinDot'
+import PinDot from 'components/PinDot'
+const VirtualKeyboard = require('react-native-virtual-keyboard')
 
-import { usePinSetup, usePinSetupActions } from '../../lib/hooks/usePinSetup'
-import { CONFIRM_PIN } from '../navigation/UnauthenticatedStackNavigator/keys'
+import { usePinSetup, usePinSetupActions } from 'lib/hooks/usePinSetup'
+import { CONFIRM_PIN } from 'pages/navigation/UnauthenticatedStackNavigator/keys'
 
 const styles = StyleSheet.create({
   viewStyle: {

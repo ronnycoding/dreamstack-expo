@@ -5,7 +5,8 @@ import {
   StyleSheet,
   GestureResponderEvent,
 } from 'react-native'
-import colors from '../../theme/colors'
+import PropTypes from 'prop-types'
+import colors from 'theme/colors'
 
 const styles = StyleSheet.create({
   touchableStyle: {

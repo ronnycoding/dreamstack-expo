@@ -16,7 +16,7 @@ const UnauthenticatedStackNavigator = createStackNavigator(
   },
   {
     initialRouteName: WELCOME,
-  }
+  },
 )
 
 export default UnauthenticatedStackNavigator

@@ -4,9 +4,9 @@ import React, {
   createContext,
   useCallback,
 } from 'react'
-import OneOrMoreChildren from 'types'
+import { OneOrMoreChildren } from 'types'
 
-import { hashWithSalt } from 'lib/crypto/hashing'
+import { hashElement } from 'lib/crypto/hashing'
 
 interface PinSetupState {
   pin: string
@@ -16,9 +16,6 @@ interface PinSetupState {
   pinHashLoaded: boolean
 }
 
-const PinSetupContext = createContext<PinSetupState>(null)
-const PinSetupDispatchContext = createContext<React.Dispatch<any>>(null)
-
 const initialState: PinSetupState = {
   pin: '',
   pinConfirmation: '',
@@ -27,13 +24,16 @@ const initialState: PinSetupState = {
   pinHashLoaded: false,
 }
 
+const PinSetupContext = createContext<PinSetupState>(initialState)
+const PinSetupDispatchContext = createContext<React.Dispatch<any> | null>(null)
+
 const LOADING_PIN_HASH = 'LOADING_PIN_HASH'
 const PIN_HASH_LOADED = 'PIN_HASH_LOADED'
 const SET_PIN = 'SET_PIN'
 const SET_PIN_CONFIRMATION = 'SET_PIN_CONFIRMATION'
 const RESET = 'RESET'
 
-const reducer = (state = initialState, { type, payload }) => {
+const reducer = (state = initialState, { type, payload }: { type: string, payload: any}) => {
   switch (type) {
     case LOADING_PIN_HASH:
       return {
@@ -79,14 +79,14 @@ export const usePinSetupActions = () => {
 
   const setPin = useCallback(
     (pin: string) => {
-      dispatch({ type: SET_PIN, payload: { pin } })
+      dispatch!({ type: SET_PIN, payload: { pin } })
     },
     [dispatch],
   )
 
   const setPinConfirmation = useCallback(
     (pin: string) => {
-      dispatch({
+      dispatch!({
         type: SET_PIN_CONFIRMATION,
         payload: { pinConfirmation: pin },
       })
@@ -96,15 +96,15 @@ export const usePinSetupActions = () => {
 
   const hashPin = useCallback(
     (pin: string) => {
-      dispatch({ type: LOADING_PIN_HASH })
-      const hash = hashWithSalt(pin)
-      dispatch({ type: PIN_HASH_LOADED, payload: { pinHash: hash } })
+      dispatch!({ type: LOADING_PIN_HASH })
+      const hash = hashElement(pin)
+      dispatch!({ type: PIN_HASH_LOADED, payload: { pinHash: hash } })
     },
     [dispatch],
   )
 
   const reset = useCallback(() => {
-    dispatch({ type: RESET })
+    dispatch!({ type: RESET })
   }, [dispatch])
 
   return {

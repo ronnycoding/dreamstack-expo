@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
 })
 
 interface BottomButtonProps {
-  title: string
-  disabled: boolean
-  onPress: (event: GestureResponderEvent) => void
+  title?: string
+  disabled?: boolean
+  onPress?: (event: GestureResponderEvent) => void
 }
 
 const BottomButton: React.FC<BottomButtonProps> = ({
@@ -50,6 +50,12 @@ const BottomButton: React.FC<BottomButtonProps> = ({
       <Text style={styles.textStyle}>{title}</Text>
     </TouchableOpacity>
   )
+}
+
+BottomButton.propTypes = {
+  title: PropTypes.string,
+  onPress: PropTypes.func,
+  disabled: PropTypes.bool,
 }
 
 export default BottomButton

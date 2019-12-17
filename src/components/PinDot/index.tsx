@@ -27,4 +27,8 @@ const PinDot: React.FC<{ active: boolean }> = ({ active = false }) => {
   )
 }
 
+PinDot.propTypes = {
+  active: PropTypes.bool.isRequired,
+}
+
 export default PinDot

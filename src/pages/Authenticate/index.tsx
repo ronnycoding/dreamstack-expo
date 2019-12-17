@@ -13,6 +13,7 @@ import colors from 'theme/colors'
 import useRegisterForPushNotifications from 'lib/hooks/useRegisterForPushNotifications'
 import Separator from 'components/Separator'
 import BottomButton from 'components/BottomButton'
+import { SingleChildOrString } from 'types'
 
 const styles = StyleSheet.create({
   container: {
@@ -34,50 +35,72 @@ const styles = StyleSheet.create({
   },
 })
 
+const PRIVATE_KEY_COPY_TEXT =
+  'You can import your TELOS account, just be sure to use the active private key. This private key will be securely stored on the phone and can be only accessed with the PIN you set up'
+
+const PrivateKeyCopy = ({ children }: SingleChildOrString) => {
+  return <Text style={styles.caption}>{children}</Text>
+}
+
+const PrivateKeyActivityIndicator = () => {
+  return (
+    <>
+      <Separator marginVertical={5} />
+      <ActivityIndicator size="large" />
+    </>
+  )
+}
+
+const PrivateKeyMessage = ({ children }: SingleChildOrString) => {
+  return (
+    <>
+      <Separator marginVertical={5} />
+      <Text>{children}</Text>
+    </>
+  )
+}
+
 const Authenticate: NavigationScreenComponent<{}, {}> = () => {
   const [privateKey, setPrivateKey] = useState('')
-  const [isRegistering, registerError] = useRegisterForPushNotifications(
-    privateKey,
-  )
+  const [
+    register,
+    isRegistering,
+    registerError,
+  ] = useRegisterForPushNotifications(privateKey)
 
-  const privateKeyInputHandler = enteredText => {
+  const privateKeyInputHandler = (enteredText: string) => {
     setPrivateKey(enteredText)
   }
 
   const handleContinueButtonPress = () => {
+    // TODO: Validate PK
+    // TODO: Get Username from PK
+    // TODO: Store PK, use pin-derived hash as key
     // register()
   }
+
+  const PrivateKeyTextInput = (
+    <TextInput
+      editable={!isRegistering}
+      placeholder="Paste your Private Key here"
+      placeholderTextColor={colors.flatWhite.dark}
+      style={styles.textField}
+      onChangeText={privateKeyInputHandler}
+    />
+  )
 
   return (
     <>
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <Text style={styles.caption}>Private Key</Text>
         <Separator marginVertical={20} />
-        <TextInput
-          editable={!isRegistering}
-          placeholder="Paste your Private Key here"
-          placeholderTextColor={colors.flatWhite.dark}
-          style={styles.textField}
-          onChangeText={privateKeyInputHandler}
-        />
+        {PrivateKeyTextInput}
         <Separator marginVertical={20} />
-        <Text style={styles.caption}>
-          You can import your TELOS account, just be sure to use the active
-          private key. This private key will be securely stored on the phone and
-          can be only accessed with the PIN you set up
-        </Text>
+        <PrivateKeyCopy>{PRIVATE_KEY_COPY_TEXT}</PrivateKeyCopy>
         <Separator marginVertical={5} />
-        {isRegistering && (
-          <>
-            <Separator marginVertical={5} />
-            <ActivityIndicator size="large" />
-          </>
-        )}
+        {isRegistering && <PrivateKeyActivityIndicator />}
         {registerError && (
-          <>
-            <Separator marginVertical={5} />
-            <Text>{registerError.message}</Text>
-          </>
+          <PrivateKeyMessage>{registerError.message}</PrivateKeyMessage>
         )}
       </KeyboardAvoidingView>
       <BottomButton

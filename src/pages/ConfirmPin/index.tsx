@@ -68,7 +68,7 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
     }
     setPinConfirmation(newPin)
     if (newPin.length === 6 && pin === newPin) {
-      // hashPin(newPin)
+      hashPin(newPin)
       handleCompletion()
     } else if (newPin.length === 6 && pin !== newPin) {
       Alert.alert('Wrong pin', "The pins you provided don't match")

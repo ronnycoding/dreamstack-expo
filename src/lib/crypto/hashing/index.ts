@@ -1,10 +1,11 @@
-import { SHA256, enc } from 'crypto-js'
-import { SALT } from 'env'
+/* eslint-disable new-cap */
+import SHA256 from 'crypto-js/sha256'
 
-export const hashWithSalt = (data) =>
-  SHA256(`${data}${SALT}`).toString(enc.Utf8)
+export const hashElement = (data: string) => {
+  return SHA256(data).toString()
+}
 
-export const compareElements = (raw, hash) => {
-  const hashed = hashWithSalt(raw)
-  return hashed === hash
+export const compareElements = (left: string, rightHashed: string) => {
+  const leftHashed = hashElement(left)
+  return leftHashed === rightHashed
 }

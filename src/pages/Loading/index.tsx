@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, ActivityIndicator, Text, StyleSheet } from 'react-native'
+import { View, ActivityIndicator, StyleSheet } from 'react-native'
 
 const loadingStyles = StyleSheet.create({
   container: {
@@ -13,7 +13,6 @@ export default function Loading() {
   return (
     <View style={loadingStyles.container}>
       <ActivityIndicator size="large" />
-      <Text>Loading</Text>
     </View>
   )
 }

@@ -1,13 +1,11 @@
 import React from 'react'
 import { SafeAreaView, View, Text, StyleSheet } from 'react-native'
-import { NavigationScreenComponent } from 'react-navigation'
 import * as Haptics from 'expo-haptics'
-import { useNavigation } from 'react-navigation-hooks'
 import PinDot from 'components/PinDot'
 const VirtualKeyboard = require('react-native-virtual-keyboard')
-
-import { usePinSetup, usePinSetupActions } from 'lib/hooks/usePinSetup'
-import { CONFIRM_PIN } from 'pages/navigation/UnauthenticatedStackNavigator/keys'
+import { useTranslation } from 'react-i18next'
+import { usePinSetup, usePinSetupActions } from 'hooks/usePinSetup'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 const styles = StyleSheet.create({
   viewStyle: {
@@ -42,16 +40,17 @@ const styles = StyleSheet.create({
   },
 })
 
-const CreatePin: NavigationScreenComponent<{}, {}> = () => {
-  const { navigate } = useNavigation()
-
+const CreatePin = ({
+  navigation,
+}: {
+  navigation: StackNavigationProp<any>
+}) => {
   const { pin } = usePinSetup()
   const { setPin } = usePinSetupActions()
-
+  const { t } = useTranslation('pin')
   const handleCompletion = () => {
-    navigate(CONFIRM_PIN)
+    navigation.navigate('ConfirmPin')
   }
-
   const handleVirtualKeyboard = (val: string) => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
     let newPin = pin
@@ -66,7 +65,7 @@ const CreatePin: NavigationScreenComponent<{}, {}> = () => {
 
   return (
     <SafeAreaView style={styles.viewStyle}>
-      <Text style={styles.title}>Set a Pin</Text>
+      <Text style={styles.title}>{t('setPin')}</Text>
       <View style={styles.dotContainer}>
         <PinDot active={pin.length >= 1} />
         <PinDot active={pin.length >= 2} />
@@ -85,10 +84,6 @@ const CreatePin: NavigationScreenComponent<{}, {}> = () => {
       </View>
     </SafeAreaView>
   )
-}
-
-CreatePin.navigationOptions = {
-  title: 'Create Pin',
 }
 
 export default CreatePin

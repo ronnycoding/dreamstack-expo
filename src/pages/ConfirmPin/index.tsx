@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react'
 import { SafeAreaView, View, Text, StyleSheet, Alert } from 'react-native'
-import { NavigationScreenComponent } from 'react-navigation'
 import * as Haptics from 'expo-haptics'
-const VirtualKeyboard = require('react-native-virtual-keyboard')
-
-import { useNavigation } from 'react-navigation-hooks'
+import { useTranslation } from 'react-i18next'
+import VirtualKeyboard from 'react-native-virtual-keyboard'
 import PinDot from 'components/PinDot'
-import { usePinSetup, usePinSetupActions } from 'lib/hooks/usePinSetup'
-import { AUTHENTICATE } from 'pages/navigation/UnauthenticatedStackNavigator/keys'
+import { usePinSetup, usePinSetupActions } from 'hooks/usePinSetup'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 const styles = StyleSheet.create({
   viewStyle: {
@@ -42,10 +40,14 @@ const styles = StyleSheet.create({
   },
 })
 
-const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
-  const { navigate } = useNavigation()
+const ConfirmPin = ({
+  navigation,
+}: {
+  navigation: StackNavigationProp<any>
+}) => {
   const { pin, pinConfirmation } = usePinSetup()
   const { setPinConfirmation, hashPin, reset } = usePinSetupActions()
+  const { t } = useTranslation('confirmPin')
 
   // On view exit, clean up pins
   useEffect(() => {
@@ -55,7 +57,7 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
   }, [reset])
 
   const handleCompletion = () => {
-    navigate(AUTHENTICATE)
+    navigation.navigate('Authenticate')
   }
 
   const handleVirtualKeyboard = (val: string) => {
@@ -71,14 +73,14 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
       hashPin(newPin)
       handleCompletion()
     } else if (newPin.length === 6 && pin !== newPin) {
-      Alert.alert('Wrong pin', "The pins you provided don't match")
+      Alert.alert(t('noMatchErrorTitle'), t('noMatchErrorDetail'))
       setPinConfirmation('')
     }
   }
 
   return (
     <SafeAreaView style={styles.viewStyle}>
-      <Text style={styles.title}>Confirm Pin</Text>
+      <Text style={styles.title}>{t('setConfirmationPin')}</Text>
       <View style={styles.dotContainer}>
         <PinDot active={pinConfirmation.length >= 1} />
         <PinDot active={pinConfirmation.length >= 2} />
@@ -97,10 +99,6 @@ const ConfirmPin: NavigationScreenComponent<{}, {}> = () => {
       </View>
     </SafeAreaView>
   )
-}
-
-ConfirmPin.navigationOptions = {
-  title: 'Confirm Pin',
 }
 
 export default ConfirmPin

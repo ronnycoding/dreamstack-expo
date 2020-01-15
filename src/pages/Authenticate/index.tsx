@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { NavigationScreenComponent } from 'react-navigation'
 import {
   KeyboardAvoidingView,
   ActivityIndicator,
@@ -7,10 +6,11 @@ import {
   StyleSheet,
   TextInput,
 } from 'react-native'
+import { useTranslation } from 'react-i18next'
 
 import colors from 'theme/colors'
 
-import useRegisterForPushNotifications from 'lib/hooks/useRegisterForPushNotifications'
+import useRegisterForPushNotifications from 'hooks/useRegisterForPushNotifications'
 import Separator from 'components/Separator'
 import BottomButton from 'components/BottomButton'
 import { SingleChildOrString } from 'types'
@@ -35,9 +35,6 @@ const styles = StyleSheet.create({
   },
 })
 
-const PRIVATE_KEY_COPY_TEXT =
-  'You can import your TELOS account, just be sure to use the active private key. This private key will be securely stored on the phone and can be only accessed with the PIN you set up'
-
 const PrivateKeyCopy = ({ children }: SingleChildOrString) => {
   return <Text style={styles.caption}>{children}</Text>
 }
@@ -60,7 +57,7 @@ const PrivateKeyMessage = ({ children }: SingleChildOrString) => {
   )
 }
 
-const Authenticate: NavigationScreenComponent<{}, {}> = () => {
+const Authenticate = () => {
   const [privateKey, setPrivateKey] = useState('')
   const [
     register,
@@ -72,6 +69,8 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
     setPrivateKey(enteredText)
   }
 
+  const { t } = useTranslation('authenticate')
+
   const handleContinueButtonPress = () => {
     // TODO: Validate PK
     // TODO: Get Username from PK
@@ -82,7 +81,7 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
   const PrivateKeyTextInput = (
     <TextInput
       editable={!isRegistering}
-      placeholder="Paste your Private Key here"
+      placeholder={t('textInputPlaceholder')}
       placeholderTextColor={colors.flatWhite.dark}
       style={styles.textField}
       onChangeText={privateKeyInputHandler}
@@ -92,11 +91,11 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
   return (
     <>
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-        <Text style={styles.caption}>Private Key</Text>
+        <Text style={styles.caption}>{t('privateKeyLabel')}</Text>
         <Separator marginVertical={20} />
         {PrivateKeyTextInput}
         <Separator marginVertical={20} />
-        <PrivateKeyCopy>{PRIVATE_KEY_COPY_TEXT}</PrivateKeyCopy>
+        <PrivateKeyCopy>{t('privateKeyCopyText')}</PrivateKeyCopy>
         <Separator marginVertical={5} />
         {isRegistering && <PrivateKeyActivityIndicator />}
         {registerError && (
@@ -104,16 +103,12 @@ const Authenticate: NavigationScreenComponent<{}, {}> = () => {
         )}
       </KeyboardAvoidingView>
       <BottomButton
-        title="CONTINUE"
+        title={t('bottomButtonText')}
         onPress={handleContinueButtonPress}
         disabled={privateKey.length < 1}
       />
     </>
   )
-}
-
-Authenticate.navigationOptions = {
-  title: 'Add your Private Key',
 }
 
 export default Authenticate

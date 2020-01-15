@@ -1,13 +1,11 @@
-/* eslint-disable global-require */
 import React from 'react'
-import { NavigationScreenComponent } from 'react-navigation'
 import { StyleSheet, Text, Image, SafeAreaView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
-import { useNavigation } from 'react-navigation-hooks'
+import { useTranslation } from 'react-i18next'
 
 import colors from 'theme/colors'
 import BottomButton from 'components/BottomButton'
-import { CREATE_PIN } from 'pages/navigation/UnauthenticatedStackNavigator/keys'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 const gradientColors = {
   top: colors.flatPurple.dark,
@@ -51,11 +49,8 @@ const styles = StyleSheet.create({
   },
 })
 
-const Welcome: NavigationScreenComponent<{}, {}> = () => {
-  const { navigate } = useNavigation()
-  const navigateToAuthenticateScreen = () => {
-    navigate(CREATE_PIN)
-  }
+const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
+  const { t } = useTranslation('welcome')
   return (
     <>
       <LinearGradient
@@ -73,27 +68,23 @@ const Welcome: NavigationScreenComponent<{}, {}> = () => {
             <Text style={{ fontFamily: 'Montserrat-Regular' }}> Starter</Text>
           </Text>
           <Text style={styles.subtitle}>
-            By{' '}
+            {`${t('by')} `}
             <Text style={{ fontFamily: 'Montserrat-Bold' }}>
               Telos Dream Stack
             </Text>
           </Text>
-          <Text style={styles.slogan}>
-            Explore all the features{'\n'}of the Telos Dream Stack
-          </Text>
+          <Text style={styles.slogan}>{t('firstLineText')}</Text>
           <BottomButton
-            title="ALRIGHT, LET'S GO"
-            onPress={navigateToAuthenticateScreen}
+            title={t('bottomButtonText')}
+            onPress={() => {
+              navigation.push('CreatePin')
+            }}
             disabled={false}
           />
         </SafeAreaView>
       </LinearGradient>
     </>
   )
-}
-
-Welcome.navigationOptions = {
-  header: null,
 }
 
 export default Welcome

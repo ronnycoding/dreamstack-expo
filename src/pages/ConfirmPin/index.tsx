@@ -73,14 +73,14 @@ const ConfirmPin = ({
       hashPin(newPin)
       handleCompletion()
     } else if (newPin.length === 6 && pin !== newPin) {
-      Alert.alert(t('noMatchErrorTitle'), t('noMatchErrorDetail'))
+      Alert.alert(t('wrongPin'), t('providedPinDontMatch'))
       setPinConfirmation('')
     }
   }
 
   return (
     <SafeAreaView style={styles.viewStyle}>
-      <Text style={styles.title}>{t('setConfirmationPin')}</Text>
+      <Text style={styles.title}>{t('confirmPin')}</Text>
       <View style={styles.dotContainer}>
         <PinDot active={pinConfirmation.length >= 1} />
         <PinDot active={pinConfirmation.length >= 2} />

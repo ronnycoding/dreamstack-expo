@@ -81,7 +81,7 @@ const Authenticate = () => {
   const PrivateKeyTextInput = (
     <TextInput
       editable={!isRegistering}
-      placeholder={t('textInputPlaceholder')}
+      placeholder={t('pastePrivateKeyHere')}
       placeholderTextColor={colors.flatWhite.dark}
       style={styles.textField}
       onChangeText={privateKeyInputHandler}
@@ -91,11 +91,11 @@ const Authenticate = () => {
   return (
     <>
       <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-        <Text style={styles.caption}>{t('privateKeyLabel')}</Text>
+        <Text style={styles.caption}>{t('privateKey')}</Text>
         <Separator marginVertical={20} />
         {PrivateKeyTextInput}
         <Separator marginVertical={20} />
-        <PrivateKeyCopy>{t('privateKeyCopyText')}</PrivateKeyCopy>
+        <PrivateKeyCopy>{t('youCanImportYourTELOSAccount')}</PrivateKeyCopy>
         <Separator marginVertical={5} />
         {isRegistering && <PrivateKeyActivityIndicator />}
         {registerError && (
@@ -103,7 +103,7 @@ const Authenticate = () => {
         )}
       </KeyboardAvoidingView>
       <BottomButton
-        title={t('bottomButtonText')}
+        title={t('continue')}
         onPress={handleContinueButtonPress}
         disabled={privateKey.length < 1}
       />

@@ -14,7 +14,7 @@ export default function Home() {
   const { t } = useTranslation('home')
   return (
     <View style={homeStyles.container}>
-      <Text>{t('pageTitle')}</Text>
+      <Text>{t('home')}</Text>
     </View>
   )
 }

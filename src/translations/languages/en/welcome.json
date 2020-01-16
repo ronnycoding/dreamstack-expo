@@ -1,5 +1,8 @@
 {
+  "expo": "EXPO",
+  "starter": "Starter",
   "by": "By",
-  "firstLineText": "Explore all the features\nof the Telos Dream Stack",
-  "bottomButtonText": "Alright, Let's go"
+  "telosDreamStack": "Telos Dream Stack",
+  "exploreAllTheFeaturesOfTelosDreamstack": "Explore all the features\nof the Telos Dream Stack",
+  "alrightLetsGo": "Alright, Let's go"
 }

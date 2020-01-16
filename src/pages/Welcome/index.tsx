@@ -64,18 +64,18 @@ const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
             style={styles.logoStyle}
           />
           <Text style={styles.heading}>
-            <Text style={{ fontFamily: 'Montserrat-Bold' }}>EXPO</Text>
-            <Text style={{ fontFamily: 'Montserrat-Regular' }}> Starter</Text>
+            <Text style={{ fontFamily: 'Montserrat-Bold' }}> {t('expo')} </Text>
+            <Text style={{ fontFamily: 'Montserrat-Regular' }}> {t('starter')} </Text>
           </Text>
           <Text style={styles.subtitle}>
             {`${t('by')} `}
             <Text style={{ fontFamily: 'Montserrat-Bold' }}>
-              Telos Dream Stack
+              {t('telosDreamStack')}
             </Text>
           </Text>
-          <Text style={styles.slogan}>{t('firstLineText')}</Text>
+          <Text style={styles.slogan}>{t('exploreAllTheFeaturesOfTelosDreamstack')}</Text>
           <BottomButton
-            title={t('bottomButtonText')}
+            title={t('alrightLetsGo')}
             onPress={() => {
               navigation.push('CreatePin')
             }}

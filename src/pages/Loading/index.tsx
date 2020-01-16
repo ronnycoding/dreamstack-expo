@@ -1,18 +1,20 @@
 import React from 'react'
-import { View, ActivityIndicator, StyleSheet } from 'react-native'
+import { ActivityIndicator } from 'react-native'
+// @ts-ignore
+import styled from '@emotion/native'
 
-const loadingStyles = StyleSheet.create({
-  container: {
+
+export default function Loading() {
+
+  const LoadingView = styled.View({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-})
+  })
 
-export default function Loading() {
   return (
-    <View style={loadingStyles.container}>
+    <LoadingView>
       <ActivityIndicator size="large" />
-    </View>
+    </LoadingView>
   )
 }

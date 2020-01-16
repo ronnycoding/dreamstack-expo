@@ -1,8 +1,10 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
 import { useTranslation } from 'react-i18next'
+import { Text } from 'react-native'
+// @ts-ignore
+import styled from '@emotion/native'
 
-const homeStyles = StyleSheet.create({
+const HomeView = styled.View({
   container: {
     flex: 1,
     alignItems: 'center',
@@ -13,8 +15,8 @@ const homeStyles = StyleSheet.create({
 export default function Home() {
   const { t } = useTranslation('home')
   return (
-    <View style={homeStyles.container}>
+    <HomeView>
       <Text>{t('home')}</Text>
-    </View>
+    </HomeView>
   )
 }

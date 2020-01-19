@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import {
-  KeyboardAvoidingView,
   ActivityIndicator,
-  Text,
-  StyleSheet,
-  TextInput,
+  Text
 } from 'react-native'
 import { useTranslation } from 'react-i18next'
+// @ts-ignore
+import styled from '@emotion/native'
 
 import colors from 'theme/colors'
 
@@ -15,28 +14,28 @@ import Separator from 'components/Separator'
 import BottomButton from 'components/BottomButton'
 import { SingleChildOrString } from 'types'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    padding: 20,
-  },
-  caption: {
-    fontFamily: 'Montserrat-Regular',
-    color: colors.flatBlack.light,
-  },
-  textField: {
-    color: colors.flatBlack.dark,
-    backgroundColor: colors.flatWhite.light,
-    width: '100%',
-    height: 50,
-    fontFamily: 'Montserrat-Regular',
-    paddingHorizontal: 20,
-  },
+const PrivateKeyInput = styled.TextInput({
+  color: colors.flatBlack.dark,
+  backgroundColor: colors.flatWhite.light,
+  width: '100%',
+  height: 50,
+  fontFamily: 'Montserrat-Regular',
+  paddingHorizontal: 20,
+})
+
+const Caption = styled.Text({
+  fontFamily: 'Montserrat-Regular',
+  color: colors.flatBlack.light,
+})
+
+const Keyboard = styled.KeyboardAvoidingView({
+  flex: 1,
+  width: '100%',
+  padding: 20,  
 })
 
 const PrivateKeyCopy = ({ children }: SingleChildOrString) => {
-  return <Text style={styles.caption}>{children}</Text>
+  return <Caption>{children}</Caption>
 }
 
 const PrivateKeyActivityIndicator = () => {
@@ -79,19 +78,18 @@ const Authenticate = () => {
   }
 
   const PrivateKeyTextInput = (
-    <TextInput
+    <PrivateKeyInput
       editable={!isRegistering}
       placeholder={t('pastePrivateKeyHere')}
       placeholderTextColor={colors.flatWhite.dark}
-      style={styles.textField}
       onChangeText={privateKeyInputHandler}
     />
   )
 
   return (
     <>
-      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
-        <Text style={styles.caption}>{t('privateKey')}</Text>
+      <Keyboard behavior="padding" enabled>
+        <Caption>{t('privateKey')}</Caption>
         <Separator marginVertical={20} />
         {PrivateKeyTextInput}
         <Separator marginVertical={20} />
@@ -101,7 +99,7 @@ const Authenticate = () => {
         {registerError && (
           <PrivateKeyMessage>{registerError.message}</PrivateKeyMessage>
         )}
-      </KeyboardAvoidingView>
+      </Keyboard>
       <BottomButton
         title={t('continue')}
         onPress={handleContinueButtonPress}

@@ -2,8 +2,11 @@ import React from 'react'
 import { StyleSheet, Text, Image, SafeAreaView } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useTranslation } from 'react-i18next'
+// @ts-ignore
+import styled from '@emotion/native'
 
 import colors from 'theme/colors'
+
 import BottomButton from 'components/BottomButton'
 import { StackNavigationProp } from '@react-navigation/stack'
 
@@ -12,41 +15,46 @@ const gradientColors = {
   bottom: colors.flatMagenta.light,
 }
 
+const SafeArea = styled.SafeAreaView({
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
+})
+
+const Logo = styled.Image({
+  width: 150,
+  height: 150,
+  padding: 20,
+})
+
+const Heading = styled.Text({
+  fontSize: 32,
+  color: '#fff',
+  marginTop: 16,
+})
+
+const Subtitle = styled.Text({
+  color: '#fff',
+  fontSize: 16,
+  marginTop: 8,
+})
+
+const Slogan = styled.Text({
+  fontFamily: 'Montserrat-Regular',
+  textAlign: 'center',
+  fontSize: 16,
+  color: '#fff',
+  marginTop: 48,
+})
+
 const styles = StyleSheet.create({
-  containerStyle: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   gradientStyle: {
     width: '100%',
     height: '100%',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  logoStyle: {
-    width: 150,
-    height: 150,
-    padding: 20,
-  },
-  heading: {
-    fontSize: 32,
-    color: '#fff',
-    marginTop: 16,
-  },
-  subtitle: {
-    color: '#fff',
-    fontSize: 16,
-    marginTop: 8,
-  },
-  slogan: {
-    fontFamily: 'Montserrat-Regular',
-    textAlign: 'center',
-    fontSize: 16,
-    color: '#fff',
-    marginTop: 48,
-  },
+  }
 })
 
 const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
@@ -57,23 +65,22 @@ const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
         colors={Object.values(gradientColors)}
         style={styles.gradientStyle}
       >
-        <SafeAreaView style={styles.containerStyle}>
-          <Image
+        <SafeArea>
+          <Logo
             source={require('assets/logo.png')}
             resizeMode="contain"
-            style={styles.logoStyle}
           />
-          <Text style={styles.heading}>
+          <Heading>
             <Text style={{ fontFamily: 'Montserrat-Bold' }}> {t('expo')} </Text>
             <Text style={{ fontFamily: 'Montserrat-Regular' }}> {t('starter')} </Text>
-          </Text>
-          <Text style={styles.subtitle}>
+          </Heading>
+          <Subtitle>
             {`${t('by')} `}
             <Text style={{ fontFamily: 'Montserrat-Bold' }}>
               {t('telosDreamStack')}
             </Text>
-          </Text>
-          <Text style={styles.slogan}>{t('exploreAllTheFeaturesOfTelosDreamstack')}</Text>
+          </Subtitle>
+          <Slogan>{t('exploreAllTheFeaturesOfTelosDreamstack')}</Slogan>
           <BottomButton
             title={t('alrightLetsGo')}
             onPress={() => {
@@ -81,7 +88,7 @@ const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
             }}
             disabled={false}
           />
-        </SafeAreaView>
+        </SafeArea>
       </LinearGradient>
     </>
   )

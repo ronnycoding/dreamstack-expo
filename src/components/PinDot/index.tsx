@@ -1,26 +1,25 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
 import PropTypes from 'prop-types'
-import colors from 'theme/colors'
+import { useTheme } from 'emotion-theming'
+// @ts-ignore
+import styled from '@emotion/native'
 
-const styles = StyleSheet.create({
-  dotStyle: {
+const PinDot: React.FC<{ active: boolean }> = ({ active = false }) => {
+  const { colors } = useTheme()
+  const dotColors = {
+    active: colors.flatPurple.light,
+    inactive: colors.flatWhite.dark,
+  }
+
+  const View = styled.View({
     width: 16,
     height: 16,
     borderRadius: 16,
-  },
-})
+  })
 
-const dotColors = {
-  active: colors.flatPurple.light,
-  inactive: colors.flatWhite.dark,
-}
-
-const PinDot: React.FC<{ active: boolean }> = ({ active = false }) => {
   return (
     <View
       style={{
-        ...styles.dotStyle,
         backgroundColor: active ? dotColors.active : dotColors.inactive,
       }}
     />

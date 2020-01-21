@@ -1,30 +1,11 @@
 import React from 'react'
 import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
   GestureResponderEvent,
 } from 'react-native'
 import PropTypes from 'prop-types'
-import colors from 'theme/colors'
-
-const styles = StyleSheet.create({
-  touchableStyle: {
-    position: 'absolute',
-    bottom: 0,
-    height: 64,
-    width: '101%',
-    flex: 1,
-    alignContent: 'center',
-    justifyContent: 'center',
-  },
-  textStyle: {
-    textAlign: 'center',
-    fontFamily: 'Montserrat-Regular',
-    color: colors.flatWhite.light,
-    textTransform: 'uppercase'
-  },
-})
+// @ts-ignore
+import styled from '@emotion/native'
+import { useTheme } from 'emotion-theming'
 
 interface BottomButtonProps {
   title?: string
@@ -37,18 +18,36 @@ const BottomButton: React.FC<BottomButtonProps> = ({
   onPress,
   disabled = false,
 }) => {
+  const { colors } = useTheme()
+  
+  const TouchableOpacity = styled.TouchableOpacity({
+    position: 'absolute',
+    bottom: 0,
+    height: 64,
+    width: '101%',
+    flex: 1,
+    alignContent: 'center',
+    justifyContent: 'center',
+  })
+
+  const Text = styled.Text({
+    textAlign: 'center',
+    fontFamily: 'Montserrat-Regular',
+    color: colors.flatWhite.light,
+    textTransform: 'uppercase'
+  })
+
   return (
     <TouchableOpacity
       disabled={disabled}
       style={{
-        ...styles.touchableStyle,
         backgroundColor: disabled
           ? colors.flatWhite.dark
           : colors.flatBlack.dark,
       }}
       onPress={onPress}
     >
-      <Text style={styles.textStyle}>{title}</Text>
+      <Text>{title}</Text>
     </TouchableOpacity>
   )
 }

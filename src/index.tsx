@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavigationNativeContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { ThemeProvider } from 'emotion-theming'
 
 import { PinSetupProvider } from 'hooks/usePinSetup'
 import useFontLoad from 'hooks/useFontLoad'
@@ -14,6 +15,7 @@ import CreatePin from 'pages/CreatePin'
 import ConfirmPin from 'pages/ConfirmPin'
 import { useTranslation } from 'react-i18next'
 import Authenticate from 'pages/Authenticate'
+import theme from 'theme'
 
 const LoadingStack = createStackNavigator()
 const Stack = createStackNavigator()
@@ -66,22 +68,24 @@ export default function App() {
   const [loadingTranslations] = useLoadTranslation()
   const loading = loadingFonts || loadingAuth || loadingTranslations
   return (
-    <PinSetupProvider>
-      <NavigationNativeContainer>
-        {loading ? (
-          <LoadingStack.Navigator>
-            <LoadingStack.Screen
-              name="Loading"
-              component={Loading}
-              options={{
-                header: () => null,
-              }}
-            />
-          </LoadingStack.Navigator>
-        ) : (
-          <LoadedNavigator isAuthenticated={isAuthenticated} />
-        )}
-      </NavigationNativeContainer>
-    </PinSetupProvider>
+    <ThemeProvider theme={theme}>
+      <PinSetupProvider>
+        <NavigationNativeContainer>
+          {loading ? (
+            <LoadingStack.Navigator>
+              <LoadingStack.Screen
+                name="Loading"
+                component={Loading}
+                options={{
+                  header: () => null,
+                }}
+              />
+            </LoadingStack.Navigator>
+          ) : (
+            <LoadedNavigator isAuthenticated={isAuthenticated} />
+          )}
+        </NavigationNativeContainer>
+      </PinSetupProvider>
+    </ThemeProvider>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, Alert } from 'react-native'
+import { Alert } from 'react-native'
 import * as Haptics from 'expo-haptics'
 import { useTranslation } from 'react-i18next'
 import VirtualKeyboard from 'react-native-virtual-keyboard'

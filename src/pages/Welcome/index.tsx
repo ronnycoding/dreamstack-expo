@@ -1,19 +1,13 @@
 import React from 'react'
-import { StyleSheet, Text, Image, SafeAreaView } from 'react-native'
+import { Text } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useTranslation } from 'react-i18next'
 // @ts-ignore
 import styled from '@emotion/native'
-
-import colors from 'theme/colors'
+import { useTheme } from 'emotion-theming'
 
 import BottomButton from 'components/BottomButton'
 import { StackNavigationProp } from '@react-navigation/stack'
-
-const gradientColors = {
-  top: colors.flatPurple.dark,
-  bottom: colors.flatMagenta.light,
-}
 
 const SafeArea = styled.SafeAreaView({
   flex: 1,
@@ -47,24 +41,25 @@ const Slogan = styled.Text({
   marginTop: 48,
 })
 
-const styles = StyleSheet.create({
-  gradientStyle: {
+const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
+  const theme : any = useTheme()
+  const gradientColors = {
+    top: theme.colors.flatPurple.dark,
+    bottom: theme.colors.flatMagenta.light,
+  }
+  const StyledLinearGradient = styled(LinearGradient)({
     width: '100%',
     height: '100%',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  }
-})
+  })
 
-const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
   const { t } = useTranslation('welcome')
   return (
     <>
-      <LinearGradient
-        colors={Object.values(gradientColors)}
-        style={styles.gradientStyle}
-      >
+      <StyledLinearGradient
+        colors={Object.values(gradientColors)}>
         <SafeArea>
           <Logo
             source={require('assets/logo.png')}
@@ -89,7 +84,7 @@ const Welcome = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
             disabled={false}
           />
         </SafeArea>
-      </LinearGradient>
+      </StyledLinearGradient>
     </>
   )
 }
